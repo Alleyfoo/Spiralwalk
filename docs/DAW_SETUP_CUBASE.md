@@ -76,3 +76,8 @@ Map CC20–27 to macro-style targets on one instrument first:
    - Movement but jitter: raise deadband/slew or lower update rate  
    - First-bar weirdness: increase arm-ticks  
    - MIDI feedback loop: verify port routing
+
+## Validation
+- `python -m spiralwalk.cli listen-clock --config configs/starter_roles.yaml` → press play in DAW → see ticks/BPM.
+- `python -m spiralwalk.cli send-test --config configs/starter_roles.yaml --mode sweep --seconds 5` → mapped knobs should move.
+- `python -m spiralwalk.cli run --config configs/starter_roles.yaml --arm-ticks 8 --session-log session.jsonl` → full run with logging.
