@@ -1,0 +1,116 @@
+transport:
+  phrase_bars: 8
+  ppq_division: 24
+
+spiral:
+  k_step: 5
+  memory_k: 2
+  p_jump: 0.08
+  seed: 42
+
+midi:
+  in_port_name: "SpiralWalk_Clock_In"
+  out_port_name: "SpiralWalk_CC_Out"
+  max_messages_per_sec: 200
+
+lanes:
+  - {name: energy, cc: 20, channel: 0, division: "1/16", curve: sine, smoothing: 0.25, role: energy, shape: s_curve}
+  - {name: brightness, cc: 21, channel: 0, division: "1/16", curve: sine, smoothing: 0.2, role: brightness, shape: exp, deadband: 1, slew_limit: 4}
+  - {name: space, cc: 22, channel: 0, division: "1/8", curve: ramp, smoothing: 0.35, role: space, slew_limit: 6}
+  - {name: time, cc: 23, channel: 0, division: "1/8", curve: random_walk, smoothing: 0.1, role: time, deadband: 3, slew_limit: 3}
+  - {name: motion, cc: 24, channel: 0, division: "1/4", curve: step_hold, smoothing: 0.15, role: motion, slew_limit: 5}
+  - {name: focus, cc: 25, channel: 0, division: "1/4", curve: sine, smoothing: 0.4, role: focus, slew_limit: 6}
+  - {name: width, cc: 26, channel: 0, division: "1/16", curve: random_walk, smoothing: 0.3, role: width, slew_limit: 8}
+  - {name: grain, cc: 27, channel: 0, division: "1/16", curve: ramp, smoothing: 0.3, role: grain, deadband: 2}
+  - {name: restraint, cc: 28, channel: 0, division: "1/8", curve: step_hold, smoothing: 0.35, role: restraint}
+  - {name: contrast, cc: 29, channel: 0, division: "1/8", curve: step_hold, smoothing: 0.2, role: contrast}
+
+scenes:
+  scene1:
+    energy: {min: 30, max: 100}
+    brightness: {min: 40, max: 110}
+    space: {min: 20, max: 90}
+    time: {min: 10, max: 80, curve_params: {step_size: 0.04}}
+    motion: {min: 0, max: 70, curve_params: {hold_steps: 6}}
+    focus: {min: 50, max: 110}
+    width: {min: 15, max: 95}
+    grain: {min: 25, max: 100}
+    restraint: {min: 30, max: 90}
+    contrast: {min: 20, max: 90}
+  scene2:
+    energy: {min: 50, max: 120}
+    brightness: {min: 20, max: 90}
+    space: {min: 10, max: 60}
+    time: {min: 25, max: 100}
+    motion: {min: 40, max: 90}
+    focus: {min: 35, max: 80}
+    width: {min: 10, max: 70}
+    grain: {min: 30, max: 90}
+    restraint: {min: 20, max: 80}
+    contrast: {min: 35, max: 100}
+  scene3:
+    energy: {min: 10, max: 70}
+    brightness: {min: 45, max: 120}
+    space: {min: 35, max: 100}
+    time: {min: 40, max: 110}
+    motion: {min: 0, max: 60}
+    focus: {min: 60, max: 127}
+    width: {min: 20, max: 100}
+    grain: {min: 25, max: 95}
+    restraint: {min: 10, max: 70}
+    contrast: {min: 25, max: 100}
+  scene4:
+    energy: {min: 55, max: 100}
+    brightness: {min: 35, max: 95}
+    space: {min: 40, max: 110}
+    time: {min: 20, max: 90, curve_params: {step_size: 0.12}}
+    motion: {min: 10, max: 60}
+    focus: {min: 45, max: 90}
+    width: {min: 35, max: 115}
+    grain: {min: 15, max: 80}
+    restraint: {min: 40, max: 100}
+    contrast: {min: 0, max: 70, curve_params: {hold_steps: 10}}
+  scene5:
+    energy: {min: 30, max: 95}
+    brightness: {min: 60, max: 120}
+    space: {min: 10, max: 65}
+    time: {min: 0, max: 50}
+    motion: {min: 40, max: 100}
+    focus: {min: 55, max: 110}
+    width: {min: 5, max: 70}
+    grain: {min: 45, max: 115}
+    restraint: {min: 25, max: 85}
+    contrast: {min: 35, max: 100}
+  scene6:
+    energy: {min: 5, max: 50}
+    brightness: {min: 0, max: 70}
+    space: {min: 60, max: 120}
+    time: {min: 45, max: 120}
+    motion: {min: 15, max: 85}
+    focus: {min: 65, max: 127}
+    width: {min: 25, max: 85}
+    grain: {min: 30, max: 90}
+    restraint: {min: 45, max: 110}
+    contrast: {min: 15, max: 80}
+  scene7:
+    energy: {min: 35, max: 105}
+    brightness: {min: 20, max: 85}
+    space: {min: 45, max: 100}
+    time: {min: 30, max: 95}
+    motion: {min: 20, max: 90}
+    focus: {min: 15, max: 70}
+    width: {min: 40, max: 115}
+    grain: {min: 25, max: 95}
+    restraint: {min: 20, max: 80}
+    contrast: {min: 20, max: 80}
+  scene8:
+    energy: {min: 60, max: 127}
+    brightness: {min: 55, max: 120}
+    space: {min: 0, max: 55}
+    time: {min: 10, max: 70}
+    motion: {min: 0, max: 55}
+    focus: {min: 30, max: 90}
+    width: {min: 20, max: 95}
+    grain: {min: 10, max: 75}
+    restraint: {min: 0, max: 65}
+    contrast: {min: 40, max: 110}
