@@ -44,3 +44,35 @@ Map CC20–27 to macro-style targets on one instrument first:
 
 - Do not echo SpiralWalk_CC_Out back into SpiralWalk_Clock_In.
 - Keep control input (if added later) on a separate port from clock.
+
+## Outline (fill with screenshots later)
+
+1) Create virtual MIDI ports (loopMIDI)  
+   - SpiralWalk_Clock_In (DAW → Python)  
+   - SpiralWalk_CC_Out (Python → DAW)
+
+2) Configure Cubase to send MIDI clock/transport  
+   - Transport settings → enable clock to SpiralWalk_Clock_In  
+   - Ensure Start/Stop is sent
+
+3) Create Spiralwalk Control track  
+   - MIDI track input: SpiralWalk_CC_Out  
+   - Route to instrument or control rack  
+   - Disable echo back to Clock_In
+
+4) Map CC to plugin parameters  
+   - Use MIDI Learn / Quick Controls / MIDI Remote  
+   - Map CC20–CC27 to macros (not random params)  
+   - Map CC28/CC29 optionally (restraint/contrast) as performance macros
+
+5) Test procedure  
+   - Run `python -m spiralwalk.cli list-ports`  
+   - Run `python -m spiralwalk.cli run --config configs/starter_roles.yaml --dry-run --arm-ticks 8`  
+   - Run `python -m spiralwalk.cli run --config configs/starter_roles.yaml --calibrate --calibrate-cc 21`  
+   - Run live with `--session-log`
+
+6) Troubleshooting  
+   - No movement: check clock input port + DAW sending clock  
+   - Movement but jitter: raise deadband/slew or lower update rate  
+   - First-bar weirdness: increase arm-ticks  
+   - MIDI feedback loop: verify port routing
