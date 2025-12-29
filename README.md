@@ -41,8 +41,12 @@ Routing template: use two ports to avoid loops — `SpiralWalk_Clock_In` for DAW
 ## Repo layout
 
 - `spiralwalk/` core modules: config, clock follower, spiral walker, lane curves, engine, MIDI I/O, CLI.
-- `configs/example.yaml` sample configuration with 8 scenes, lane roles, and CC lanes (20–29).
+- `configs/starter_roles.yaml` stable lane roles + routing template (CC20–29).
+- `configs/example.yaml` earlier example configuration.
 - `tests/` light unit tests for spiral logic, curve generators, and clock simulation.
+- `docs/UNDERSTANDING.md` mental model + ASCII map.
+- `docs/DAW_SETUP_CUBASE.md` routing/mapping template.
+- `docs/CONFIG_GUIDE.md` config keys and roles.
 
 ## Behavior
 
